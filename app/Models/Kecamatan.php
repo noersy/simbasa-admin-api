@@ -41,14 +41,6 @@ class Kecamatan extends Model
     protected $fillable = ['kelurahan_id', 'nama_kecamatan', 'created_at', 'updated_at', 'deleted_at'];
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function kelurahan()
-    {
-        return $this->belongsTo('App\Models\Kelurahan');
-    }
-
-    /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function kelurahans()

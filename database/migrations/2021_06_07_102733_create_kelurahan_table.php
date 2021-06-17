@@ -15,7 +15,10 @@ class CreateKelurahanTable extends Migration
     {
         Schema::table('kelurahan', function (Blueprint $table) {
             $table->string('nama_kelurahan');
-            $table->foreignId('kecamatan_id')->references('id')->on('kecamatan')->onUpdate('CASCADE')->onDelete('CASCADE');
+            $table->foreignId('kecamatan_id')->references('id')
+                ->on('kecamatan')
+                ->onUpdate('CASCADE')
+                ->onDelete('CASCADE');
             $table->timestamps();
             $table->softDeletes();
         });

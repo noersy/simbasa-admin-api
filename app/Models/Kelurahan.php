@@ -61,14 +61,6 @@ class Kelurahan extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function kecamatans()
-    {
-        return $this->hasMany('App\Models\Kecamatan');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
     public function nasabahs()
     {
         return $this->hasMany('App\Models\Nasabah');

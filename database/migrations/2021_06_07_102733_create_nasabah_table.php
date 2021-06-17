@@ -16,7 +16,7 @@ class CreateNasabahTable extends Migration
         Schema::table('nasabah', function (Blueprint $table) {
             $table->string('nama_nasabah', 50);
             $table->longText('almt_nasabah');
-            $table->double('no_hp');
+            $table->string('no_hp');
             $table->string('jenis_kelamin', 50);
             $table->string('tmpt_lahir', 50);
             $table->string('tgl_lahir', 50);

@@ -26,7 +26,7 @@ class CreateBankSampahTable extends Migration
             $table->id();
             $table->string('nm_banksampah', 50);
             $table->string('almt_banksampah', 50);
-            $table->double('telp');
+            $table->string('telp');
             $table->dateTime('tgl_berdiri');
             $table->string('jenis_sampah', 50);
             $table->string('nm_penggurus', 50);
