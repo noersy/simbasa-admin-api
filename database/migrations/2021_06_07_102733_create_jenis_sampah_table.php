@@ -13,14 +13,21 @@ class CreateJenisSampahTable extends Migration
      */
     public function up()
     {
-        Schema::create('jenis_sampah', function (Blueprint $table) {
-            $table->double('id_sampah')->primary();
+
+        Schema::create('kategori', function (Blueprint $table) {
+            $table->id();
+        });
+
+
+        Schema::table('jenis_sampah', function (Blueprint $table) {
             $table->string('nm_sampah', 50);
             $table->string('satuan', 50);
             $table->integer('hrg_jual');
             $table->integer('hrg_beli');
             $table->double('stock');
-            $table->string('kategori_id_kategori', 50)->nullable()->index('jenis_sampah_kategori_fk');
+            $table->foreignId('kategori_id')->references('id')->on('kategori')->onUpdate('CASCADE')->onDelete('CASCADE');
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 

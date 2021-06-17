@@ -13,11 +13,29 @@ class CreateDetailPenjualanTable extends Migration
      */
     public function up()
     {
+
+        Schema::create('jenis_sampah', function (Blueprint $table) {
+            $table->id();
+        });
+
+        Schema::create('jual_sampah', function (Blueprint $table) {
+            $table->id();
+        });
+
+        
         Schema::create('detail_penjualan', function (Blueprint $table) {
             $table->string('jml_jual', 50);
             $table->string('subtotal_jual', 50);
-            $table->double('jenis_sampah_id_sampah')->index('detail_penjualan_jenis_sampah_fk');
-            $table->double('jual_sampah_id_jual')->nullable()->index('detail_penjualan_jual_sampah_fk');
+            $table->foreignId('jenis_sampah_id')->references('id')
+                ->on('jenis_sampah')
+                ->onUpdate('CASCADE')
+                ->onDelete('CASCADE');
+            $table->foreignId('jual_sampah_id')->references('id')
+                ->on('jual_sampah')
+                ->onUpdate('CASCADE')
+                ->onDelete('CASCADE');
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 

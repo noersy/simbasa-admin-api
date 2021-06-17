@@ -13,11 +13,12 @@ class CreatePengepulTable extends Migration
      */
     public function up()
     {
-        Schema::create('pengepul', function (Blueprint $table) {
-            $table->double('id_pengepul')->primary();
+        Schema::table('pengepul', function (Blueprint $table) {
             $table->string('nm_pengepul', 50);
             $table->longText('alamat_pengepul');
             $table->string('telp_pengepul', 50);
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 

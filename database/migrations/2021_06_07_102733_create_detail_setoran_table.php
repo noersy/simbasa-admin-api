@@ -13,11 +13,24 @@ class CreateDetailSetoranTable extends Migration
      */
     public function up()
     {
+
+        Schema::create('setor_sampah', function (Blueprint $table) {
+            $table->id();
+        });
+
         Schema::create('detail_setoran', function (Blueprint $table) {
             $table->string('jml_setor', 50);
             $table->string('subtotal_setor', 50);
-            $table->double('setor_sampah_id_setor')->index('detail_setoran_setor_sampah_fk');
-            $table->double('jenis_sampah_id_sampah')->nullable()->index('detail_setoran_jenis_sampah_fk');
+            $table->foreignId('setor_sampah_id')->references('id')
+                ->on('jenis_sampah')
+                ->onUpdate('CASCADE')
+                ->onDelete('CASCADE');
+            $table->foreignId('jenis_sampah_id')->references('id')
+                ->on('setor_sampah')
+                ->onUpdate('CASCADE')
+                ->onDelete('CASCADE');
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 

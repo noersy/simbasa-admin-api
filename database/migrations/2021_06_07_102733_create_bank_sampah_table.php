@@ -13,8 +13,17 @@ class CreateBankSampahTable extends Migration
      */
     public function up()
     {
+
+        Schema::create('kecamatan', function (Blueprint $table) {
+            $table->id();
+        });
+
+        Schema::create('kelurahan', function (Blueprint $table) {
+            $table->id();
+        });
+
         Schema::create('bank_sampah', function (Blueprint $table) {
-            $table->double('id_banksampah')->primary();
+            $table->id();
             $table->string('nm_banksampah', 50);
             $table->string('almt_banksampah', 50);
             $table->double('telp');
@@ -27,10 +36,13 @@ class CreateBankSampahTable extends Migration
             $table->string('email', 50);
             $table->string('username', 50);
             $table->string('password', 50);
-            $table->double('kelurahan_id_kelurahan')->nullable()->index('bank_sampah_kelurahan_fk');
-            $table->dateTime('createat');
-            $table->dateTime('updateat')->nullable();
-            $table->dateTime('deleteat')->nullable();
+            $table->foreignId('kelurahan_id')
+                ->references('id')
+                ->on('kelurahan')
+                ->onUpdate('CASCADE')
+                ->onDelete('CASCADE');
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 

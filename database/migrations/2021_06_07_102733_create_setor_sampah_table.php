@@ -13,11 +13,12 @@ class CreateSetorSampahTable extends Migration
      */
     public function up()
     {
-        Schema::create('setor_sampah', function (Blueprint $table) {
-            $table->double('id_setor')->primary();
+        Schema::table('setor_sampah', function (Blueprint $table) {
             $table->dateTime('tgl_setor');
             $table->double('total_setor');
-            $table->string('nasabah_id_nasabah', 50)->nullable()->index('setor_sampah_nasabah_fk');
+            $table->foreignId('nasabah_id')->references('id')->on('nasabah')->onUpdate('CASCADE')->onDelete('CASCADE');
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 

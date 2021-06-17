@@ -13,11 +13,25 @@ class CreateAmbilTabunganTable extends Migration
      */
     public function up()
     {
+        Schema::create('nasabah', function (Blueprint $table) {
+            $table->id();
+        });
+
+
+        
+
+
         Schema::create('ambil_tabungan', function (Blueprint $table) {
-            $table->string('id_ambil', 50)->primary();
+            $table->id();
             $table->dateTime('tgl_ambil');
             $table->integer('jml_ambil');
-            $table->string('nasabah_id_nasabah', 50)->nullable()->index('ambil_tabungan_nasabah_fk');
+            $table->foreignId('nasabah_id')
+                ->references('id')
+                ->on('nasabah')
+                ->onUpdate('CASCADE')
+                ->onDelete('CASCADE');
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 

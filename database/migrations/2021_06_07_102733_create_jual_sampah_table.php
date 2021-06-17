@@ -13,11 +13,17 @@ class CreateJualSampahTable extends Migration
      */
     public function up()
     {
-        Schema::create('jual_sampah', function (Blueprint $table) {
-            $table->double('id_jual')->primary();
+        Schema::create('pengepul', function (Blueprint $table) {
+            $table->id();
+        });
+
+
+        Schema::table('jual_sampah', function (Blueprint $table) {
             $table->dateTime('tgl_jual');
             $table->double('total_jual');
-            $table->double('pengepul_id_pengepul')->nullable()->index('jual_sampah_pengepul_fk');
+            $table->foreignId('pengepul_id_pengepul')->references('id')->on('pengepul')->onUpdate('CASCADE')->onDelete('CASCADE');
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 

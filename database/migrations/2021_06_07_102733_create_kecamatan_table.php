@@ -13,10 +13,11 @@ class CreateKecamatanTable extends Migration
      */
     public function up()
     {
-        Schema::create('kecamatan', function (Blueprint $table) {
-            $table->double('id_kecamatan')->primary();
-            $table->string('nama_kecamatan', 50);
-            $table->double('kelurahan_id_kelurahan')->unique('kecamatan__idx');
+        Schema::table('kecamatan', function (Blueprint $table) {
+            $table->string('nama_kecamatan');
+            $table->foreignId('kelurahan_id')->references('id')->on('kelurahan')->onUpdate('CASCADE')->onDelete('CASCADE');
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 
