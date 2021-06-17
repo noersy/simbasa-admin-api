@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\api\BankController;
+use App\Http\Controllers\api\NasabahController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +16,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::prefix('v1')->group(function () {
+    Route::prefix('nasabah')->group(function () {
+        Route::get('all', [NasabahController::class, 'getAll']);
+        Route::post('create', [NasabahController::class, 'create']);
+    });
+    Route::prefix('bank')->group(function () {
+        Route::get('all', [BankController::class, 'getAll']);
+    });
+    Route::prefix('pengempul')->group(function () {
+        Route::get('all', [NasabahController::class, 'getAll']);
+    });
 });
+
+
+Route::any('{any}', function () {
+    return response()->json([
+        'status' => 'error',
+        'message' => 'Resource not found'
+    ], 404);
+})->where('any', '.*');

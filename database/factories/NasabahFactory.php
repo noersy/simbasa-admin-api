@@ -23,6 +23,7 @@ class NasabahFactory extends Factory
     {
         return [
             'nama_nasabah' => $this->faker->name(),
+            'username' => $this->faker->userName(),
             'almt_nasabah' => $this->faker->address(),
             'no_hp' => $this->faker->phoneNumber(),
             'jenis_kelamin' => "",
