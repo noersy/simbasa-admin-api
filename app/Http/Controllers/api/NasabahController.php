@@ -79,4 +79,23 @@ class NasabahController extends Controller
             'user' => $nasabah
         ]);
     }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        $sewa = Nasabah::find($id);
+        if ($sewa != null) {
+            $sewa->delete();
+            return response(['message' => 'Nasabah has been deleted!']);
+        } else {
+            return response([
+                'message' => 'No data found!',
+            ], 403);
+        }
+    }
 }

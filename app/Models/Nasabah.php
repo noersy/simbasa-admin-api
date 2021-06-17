@@ -50,7 +50,7 @@ class Nasabah extends Model
     /**
      * @var array
      */
-    protected $fillable = ['kelurahan_id', 'nama_nasabah', 'almt_nasabah', 'no_hp', 'jenis_kelamin', 'tmpt_lahir', 'tgl_lahir', 'status', 'agama', 'pekerjaan', 'no_rekening', 'saldo', 'password', 'created_at', 'updated_at', 'deleted_at'];
+    protected $fillable = ['username', 'kelurahan_id', 'nama_nasabah', 'almt_nasabah', 'no_hp', 'jenis_kelamin', 'tmpt_lahir', 'tgl_lahir', 'status', 'agama', 'pekerjaan', 'no_rekening', 'saldo', 'password', 'created_at', 'updated_at', 'deleted_at'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

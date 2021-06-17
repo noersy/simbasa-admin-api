@@ -20,6 +20,7 @@ Route::prefix('v1')->group(function () {
     Route::prefix('nasabah')->group(function () {
         Route::get('all', [NasabahController::class, 'getAll']);
         Route::post('create', [NasabahController::class, 'create']);
+        Route::delete('delete/{id}', [NasabahController::class, 'destroy']);
     });
     Route::prefix('bank')->group(function () {
         Route::get('all', [BankController::class, 'getAll']);
