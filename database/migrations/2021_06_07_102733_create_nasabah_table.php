@@ -18,12 +18,12 @@ class CreateNasabahTable extends Migration
             $table->string('username', 50) -> unique();
             $table->longText('almt_nasabah');
             $table->string('no_hp');
-            $table->string('jenis_kelamin', 50);
+            $table->string('jenis_kelamin', 20);
             $table->string('tmpt_lahir', 50);
             $table->string('tgl_lahir', 50);
             $table->string('status', 50)->nullable();
             $table->string('agama', 50)->nullable();
-            $table->string('pekerjaan', 50);
+            $table->string('pekerjaan');
             $table->double('no_rekening');
             $table->integer('saldo');
             $table->string('password', 200);

@@ -14,8 +14,8 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'web',
-        'passwords' => 'users',
+        'guard' => 'api',
+        'passwords' => 'bank',
     ],
 
     /*
@@ -42,9 +42,8 @@ return [
         ],
 
         'api' => [
-            'driver' => 'token',
-            'provider' => 'users',
-            'hash' => false,
+            'driver' => 'jwt',
+            'provider' => 'bank',
         ],
     ],
 
@@ -66,9 +65,9 @@ return [
     */
 
     'providers' => [
-        'users' => [
+        'bank' => [
             'driver' => 'eloquent',
-            'model' => App\Models\User::class,
+            'model' => App\Models\Bank_Sampah::class,
         ],
 
         // 'users' => [
@@ -93,11 +92,11 @@ return [
     */
 
     'passwords' => [
-        'users' => [
-            'provider' => 'users',
+        'bank' => [
+            'provider' => 'bank',
             'table' => 'password_resets',
-            'expire' => 60,
-            'throttle' => 60,
+            'expire' => 120,
+            'throttle' => 120,
         ],
     ],
 

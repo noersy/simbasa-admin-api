@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\api\BankController;
+use App\Http\Controllers\api\AuthBankController;
+use App\Http\Controllers\api\HomePageController;
 use App\Http\Controllers\api\NasabahController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -22,12 +24,18 @@ Route::prefix('v1')->group(function () {
         Route::post('create', [NasabahController::class, 'create']);
         Route::delete('delete/{id}', [NasabahController::class, 'destroy']);
     });
-    Route::prefix('bank')->group(function () {
-        Route::get('all', [BankController::class, 'getAll']);
+
+    Route::prefix('auth')->group(function () {
+        Route::post('create', [AuthBankController::class, 'create']);
+        Route::post('login', [AuthBankController::class, 'login']);
     });
+
     Route::prefix('pengempul')->group(function () {
         Route::get('all', [NasabahController::class, 'getAll']);
     });
+
+    Route::get('homepage', [HomePageController::class, 'getAll']);
+
 });
 
 

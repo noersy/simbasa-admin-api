@@ -33,9 +33,8 @@ class CreateBankSampahTable extends Migration
             $table->double('jml_karyawan');
             $table->integer('jml_nasabah');
             $table->double('jml_simpanan');
-            $table->string('email', 50);
-            $table->string('username', 50);
-            $table->string('password', 50);
+            $table->string('email') -> unique();
+            $table->string('password');
             $table->foreignId('kelurahan_id')
                 ->references('id')
                 ->on('kelurahan')

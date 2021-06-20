@@ -44,8 +44,7 @@ class DatabaseSeeder extends Seeder
             'jml_simpanan' => 100000,
             'kelurahan_id' => 1,
             'email' => "noersy@gmail.com",
-            'username' => "noersy",
-            'password' => "123456",
+            'password' => Hash::make("123456"),
         ]);
 
         DB::table('kategori')->insert([

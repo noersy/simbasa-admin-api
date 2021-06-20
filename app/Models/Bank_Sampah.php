@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
+use Tymon\JWTAuth\Contracts\JWTSubject;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+
 
 /**
  * @property integer $id
@@ -27,7 +30,7 @@ use Illuminate\Notifications\Notifiable;
  * @property string $deleted_at
  * @property Kelurahan $kelurahan
  */
-class Bank_Sampah extends Model
+class Bank_Sampah extends Authenticatable implements JWTSubject
 {
     use HasFactory, SoftDeletes, Notifiable;
 
@@ -39,6 +42,7 @@ class Bank_Sampah extends Model
      */
     protected $table = 'bank_sampah';
 
+    
     /**
      * The "type" of the auto-incrementing ID.
      * 
@@ -49,7 +53,7 @@ class Bank_Sampah extends Model
     /**
      * @var array
      */
-    protected $fillable = ['kelurahan_id', 'nm_banksampah', 'almt_banksampah', 'telp', 'tgl_berdiri', 'jenis_sampah', 'nm_penggurus', 'jml_karyawan', 'jml_nasabah', 'jml_simpanan', 'email', 'username', 'password', 'created_at', 'updated_at', 'deleted_at'];
+    protected $fillable = ['kelurahan_id', 'nm_banksampah', 'almt_banksampah', 'telp', 'tgl_berdiri', 'jenis_sampah', 'nm_penggurus', 'jml_karyawan', 'jml_nasabah', 'jml_simpanan', 'email', 'username', 'password',];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -57,5 +61,25 @@ class Bank_Sampah extends Model
     public function kelurahan()
     {
         return $this->belongsTo('App\Models\Kelurahan');
+    }
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'password', 'remember_token',
+    ];
+
+
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    public function getJWTCustomClaims()
+    {
+        return [];
     }
 }
