@@ -39,7 +39,7 @@ class Setor_Sampah extends Model
     /**
      * @var array
      */
-    protected $fillable = ['nasabah_id', 'tgl_setor', 'total_setor', 'created_at', 'updated_at', 'deleted_at'];
+    protected $fillable = ['nasabah_id', 'tgl_setor', 'total_setor'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

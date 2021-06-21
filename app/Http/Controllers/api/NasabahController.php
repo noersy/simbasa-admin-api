@@ -27,7 +27,6 @@ class NasabahController extends Controller
         ], 200);
     }
 
-    
 
     /**
      * Display a listing of the resource.
@@ -38,13 +37,9 @@ class NasabahController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'username' => 'required',
-            'kelurahan_id' => 'required',
             'nama_nasabah' => 'required',
             'almt_nasabah' => 'required',
             'no_hp' => 'required',
-            'jenis_kelamin' => 'required',
-            'tmpt_lahir' => 'required',
-            'tgl_lahir' => 'required',
             'pekerjaan' => 'required',
             'no_rekening' => 'required',
             'saldo' => 'required',
@@ -62,7 +57,7 @@ class NasabahController extends Controller
 
         $nasabah = Nasabah::create([
             'username' => $request->input('username'),
-            'kelurahan_id' => $request->input('kelurahan_id'),
+            'kelurahan_id' =>  auth() -> user() -> kelurahan_id,
             'nama_nasabah' => $request->input('nama_nasabah'),
             'almt_nasabah' => $request->input('almt_nasabah'),
             'no_hp' => $request->input('no_hp'),

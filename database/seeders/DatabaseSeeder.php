@@ -48,14 +48,38 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('kategori')->insert([
-            'nm_kategori' => "plastik",
+            'nm_kategori' => "anorganik",
         ]);
+
+        DB::table('kategori')->insert([
+            'nm_kategori' => "organik",
+        ]);
+
 
         DB::table('pengepul')->insert([
             'nm_pengepul' => "Orang",
             'telp_pengepul' => " ",
             'alamat_pengepul' => " ",
             'alamat_pengepul' => "12345600000",
+        ]);
+
+
+        DB::table('jenis_sampah')->insert([
+            'kategori_id' => 1, 
+            'nm_sampah' => "plastik", 
+            'satuan' => "kg", 
+            'hrg_jual' => 12000, 
+            'hrg_beli'=> 10000, 
+            'stock' => 10
+        ]);
+
+        DB::table('jenis_sampah')->insert([
+            'kategori_id' => 2, 
+            'nm_sampah' => "kertas", 
+            'satuan' => "kg", 
+            'hrg_jual' => 12000, 
+            'hrg_beli'=> 10000, 
+            'stock' => 10
         ]);
     
         Nasabah::factory(5)->create();

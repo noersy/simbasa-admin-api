@@ -1,10 +1,9 @@
 <?php
 
-use App\Http\Controllers\api\BankController;
 use App\Http\Controllers\api\AuthBankController;
 use App\Http\Controllers\api\HomePageController;
 use App\Http\Controllers\api\NasabahController;
-use Illuminate\Http\Request;
+use App\Http\Controllers\api\SetorSampahController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,7 +33,14 @@ Route::prefix('v1')->group(function () {
         Route::get('all', [NasabahController::class, 'getAll']);
     });
 
+    Route::prefix('setoran')->group(function () {
+        Route::get('/', [SetorSampahController::class, 'show']);
+        Route::post('create', [SetorSampahController::class, 'create']);
+    
+    });
+
     Route::get('homepage', [HomePageController::class, 'getAll']);
+    Route::get('jenis', [SetorSampahController::class, 'jenis']);
 
 });
 

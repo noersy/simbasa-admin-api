@@ -26,7 +26,7 @@ class NasabahFactory extends Factory
             'username' => $this->faker->userName(),
             'almt_nasabah' => $this->faker->address(),
             'no_hp' => $this->faker->phoneNumber(),
-            'jenis_kelamin' => "",
+            'jenis_kelamin' => false,
             'tmpt_lahir' => "",
             'tgl_lahir' => "",
             'status' => "",
@@ -34,8 +34,8 @@ class NasabahFactory extends Factory
             'pekerjaan' =>  $this->faker->jobTitle(),
             'no_rekening' =>  $this->faker->creditCardNumber(),
             'saldo' =>  100,
-            'password' =>  "123456",
             'kelurahan_id' =>  1,
+            'password' =>  "123456",
         ];
     }
 
